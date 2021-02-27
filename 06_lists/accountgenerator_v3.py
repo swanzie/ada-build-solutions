@@ -1,3 +1,4 @@
+# optional enhancements to account generator prompting user for names and ensuring no id duplicates
 import random
 
 names = []

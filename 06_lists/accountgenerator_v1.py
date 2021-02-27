@@ -1,4 +1,4 @@
-# your code goes here
+# first attempt at account generator - multiple for loops to create lists
 import random
 
 names = ['ROSIE MARTINEZ', 'JOE LIU', 'SALLY SUE', 'BOB JOHNSON', 'DELIA AGHO']
