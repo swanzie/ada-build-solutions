@@ -2,33 +2,49 @@
 
 import random
 
-#step 2 - list of student names
-student_names = ["ROSIE MARTINEZ", "JOE LIU", "SALLY SUE", "BOB JOHNSON", "DELIA AGHO"]
+#ask user for name
+def get_full_name():
+  student_name = input("full name: ")
+  return student_name
 
-#step 3 - loop generator to randomly assign student ID numbers from 111111 - 999999 and store in student ID
-ids = []
-for i in range(len(student_names)):
-  ids.append(random.randint(111111, 999999))
+#create list with user inputted names
+names = []
+def get_list_names():
+  more_names = True
+  choice = ""
 
-#step 4 - generate student e-mail addresses in format: first initial + last name + last 3 digits of ID @ example.org
-emails = []
-i = 0
-for name in student_names:
-  [first,last] = name.split(" ")
-  emails.append(first[0]+last+str(ids[i])[3:]+"@example.org")
-  i += 1
+  #ask user for unlimited number of names
+  while more_names:
+    names.append(get_full_name())
+    choice = input("more names? y/n: ")
+    if choice == "y":
+      more_names = True
+    else: 
+      more_names = False
+  print("\n")
 
-#step 5 - create list of dictionaries
+#invoke user to input list of names
+get_list_names()
+
+#step 5 - populate list with dictionaries of student account that each as a name, ID, and email with a single loop
 student_accounts = []
-for i in range(len(student_names)):
+for i in range(len(names)):
+
+  emails = []
+  j = 0
+  id = random.randint(111111, 999999)
+  for name in names:
+    [first,last] = name.split(" ")
+    emails.append(first[0]+last+str(id)[3:]+"@example.org")
+    j += 1  
   student_accounts.append(
-      {"name": student_names[i],
-       "ID": ids[i],
-       "emails": emails[i]}
+      {"name": names[i],
+       "id": id,
+       "email": emails[i]}
     )
 
 # print student name, ID, and email
 for account in student_accounts:
   print(f'name: {account["name"]}')
-  print(f"ID: {account['ID']}")
-  print(f"email: {account['emails']}\n")
+  print(f"id: {account['id']}")
+  print(f"email: {account['email']}\n")
